@@ -78,6 +78,8 @@ class SellAll extends PluginBase{
                                 EconomyAPI::getInstance()->addMoney($sender->getName(), (int)$totalprice);
                                 $item->setCount($item->getCount() - (int)$count);
                                 $sender->getInventory()->setItemInHand($item);
+				$sender->sendTitle(TextFormat::GREEN."Success");
+				$sender->sendTip(TextFormat::YELLOW."You Made "TextFormat::GOLD.(string)$totalprice.TextFormat::YELLOW.".");
                                 $sender->sendMessage(TextFormat::colorize($this->replaceVars($this->msg["success.sell"], array(
                                     "AMOUNT" => (string)$count,
                                     "ITEMNAME" => $item->getName(),
@@ -116,6 +118,8 @@ class SellAll extends PluginBase{
                                 $inventory->sendContents($sender);
                                 $totalprice = $count * $price;
                                 EconomyAPI::getInstance()->addMoney($sender->getName(), (int)$totalprice);
+				$sender->sendTitle(TextFormat::GREEN."Success");
+				$sender->sendTip(TextFormat::YELLOW."You Made "TextFormat::GOLD.(string)$totalprice.TextFormat::YELLOW.".");    
                                 $sender->sendMessage(TextFormat::colorize($this->replaceVars($this->msg["success.sell"], array(
                                     "AMOUNT" => (string)$count,
                                     "ITEMNAME" => $item->getName(),
@@ -133,6 +137,8 @@ class SellAll extends PluginBase{
                                 $inventory->sendContents($sender);
                                 $totalprice = $count * $price;
                                 EconomyAPI::getInstance()->addMoney($sender->getName(), (int)$totalprice);
+				$sender->sendTitle(TextFormat::GREEN."Success");
+				$sender->sendTip(TextFormat::YELLOW."You Made "TextFormat::GOLD.(string)$totalprice.TextFormat::YELLOW.".");    
                                 $sender->sendMessage(TextFormat::colorize($this->replaceVars($this->msg["success.sell"], array(
                                     "AMOUNT" => (string)$count,
                                     "ITEMNAME" => $item->getName(),
@@ -161,6 +167,8 @@ class SellAll extends PluginBase{
                                 return true;
                             }
                             EconomyAPI::getInstance()->addMoney($sender->getName(), (int)$revenue);
+			    $sender->sendTitle(TextFormat::GREEN."Success");
+				$sender->sendTip(TextFormat::YELLOW."You Made "TextFormat::GOLD.(string)$revenue.TextFormat::YELLOW.".");		    
                             $sender->sendMessage(TextFormat::colorize($this->replaceVars($this->msg["success.sell.inventory"], array(
                                 "MONEY" => (string)$revenue))));
                             return true;
